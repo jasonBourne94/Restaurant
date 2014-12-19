@@ -1,7 +1,7 @@
 package ejb;
 
 import entities.Item;
-import entities.Produit;
+import entities.OLD_Produit;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -11,21 +11,19 @@ import javax.persistence.Query;
 @Stateless
 public class Cuisine 
 {
-    
-    
     @PersistenceContext(unitName = "Restaurant-ejbPU")
     private EntityManager em;
     
-    public void ChangerEtat(Produit produit)
-    {
-        if(produit.getStarted()){
-            produit.setFinished(true);
-        }else{
-            produit.setStarted(true);
-        }  
-    }
+//    public void ChangerEtat(OLD_Produit produit)
+//    {
+//        if(produit.getStarted()){
+//            produit.setFinished(true);
+//        }else{
+//            produit.setStarted(true);
+//        }  
+//    }
     
-    public List<Produit> getListe() {
+    public List<Item> getListe() {
         
         String r01 = "select p from Produit p";
         System.out.println("------------------------------------------");
@@ -35,35 +33,44 @@ public class Cuisine
         return qr.getResultList();
     }
     
-    public void ChangerEtat(String produitRef){
+    public void ChangerEtat(String produitRef)
+    {
         System.out.println("*******************************************" + produitRef + "****************************");
         Long id = Long.parseLong(produitRef);
         System.out.println("*******************************************" + id + "****************************");
-        List<Produit> lp = getListe();
-        for (Produit p:lp ){
+        List<Item> lp = getListe();
+        for (Item p:lp ){
             if(p.getId().compareTo(id)==0)
             {
                 System.out.println("--------------------***********************--------------------********************---------------------");
-                ChangerEtat(p);
+                
+                if(p.getStarted()){
+                    p.setFinished(true);
+                }else{
+                    p.setStarted(true);
+                }
             em.persist(p);
             }
         }
     }
-    public void RemiseZero (Produit produit){
-        
-            produit.setFinished(false);
-            produit.setStarted(false);
-        
-    }
+    
+//    public void RemiseZero (OLD_Produit produit){
+//        
+//            produit.setFinished(false);
+//            produit.setStarted(false);
+//        
+//    }
             
     public void RemiseZero(String produitRef){
         Long id = Long.parseLong(produitRef);
-        List<Produit> lp = getListe();
-        for (Produit p:lp ){
+        List<Item> lp = getListe();
+        for (Item p:lp ){
             if(p.getId().compareTo(id)==0)
             {
                 System.out.println("--------------------***********************--------------------********************---------------------");
-                RemiseZero(p);
+                
+            p.setFinished(false);
+            p.setStarted(false);
             em.persist(p);
             }
     }

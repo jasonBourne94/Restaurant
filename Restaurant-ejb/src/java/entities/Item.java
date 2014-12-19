@@ -4,26 +4,32 @@ package entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Item implements Serializable
 {
-
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nomItem;
-
     private String description = "";
     private String imagePath = "";
     private BigDecimal TVA;
     private BigDecimal prixHT;
     private Boolean Cuisine;
     private Boolean Active;
+    private Boolean Started = false;
+    private Boolean Finished = false;
+    private String commentaire = "";
     private String categorie;
 
-        @ManyToOne
+    @ManyToOne
     private Commande commande;
         
     
@@ -43,6 +49,23 @@ public class Item implements Serializable
         this.Cuisine = Cuisine;
         this.Active = true;
         this.categorie = categorie;
+    }
+
+    public Item(String nomItem, String description, String imagePath,
+                BigDecimal TVA, BigDecimal prixHT, Boolean Cuisine, String categorie,
+                Boolean argStarted, Boolean argFinished, String argCommentaires)
+    {
+        this.nomItem = nomItem;
+        this.description = description;
+        this.imagePath = imagePath;
+        this.TVA = TVA;
+        this.prixHT = prixHT;
+        this.Cuisine = Cuisine;
+        this.Active = true;
+        this.categorie = categorie;
+        this.Started = argStarted;
+        this.Finished = argFinished;
+        this.commentaire = argCommentaires;
     }
 
 
@@ -86,6 +109,38 @@ public class Item implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="g/s">
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public Boolean getStarted() {
+        return Started;
+    }
+
+    public void setStarted(Boolean Started) {
+        this.Started = Started;
+    }
+
+    public Boolean getFinished() {
+        return Finished;
+    }
+
+    public void setFinished(Boolean Finished) {
+        this.Finished = Finished;
+    }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
+    
     public String getNomItem()
     {
         return nomItem;

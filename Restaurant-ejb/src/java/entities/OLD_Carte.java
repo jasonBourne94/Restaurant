@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author cdi406
  */
 @Entity
-public class Carte implements Serializable
+public class OLD_Carte implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,11 +45,11 @@ public class Carte implements Serializable
     public boolean equals(Object object)
     {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Carte))
+        if (!(object instanceof OLD_Carte))
         {
             return false;
         }
-        Carte other = (Carte) object;
+        OLD_Carte other = (OLD_Carte) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
         {
             return false;

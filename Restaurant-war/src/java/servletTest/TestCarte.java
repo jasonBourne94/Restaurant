@@ -5,7 +5,7 @@
  */
 package servletTest;
 
-import ejb.GestionnaireItemLocal;
+import ejb.CarteLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 public class TestCarte extends HttpServlet {
 
     @EJB
-    private GestionnaireItemLocal gestionnaireItem;
+    private CarteLocal gestionnaireItem;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
