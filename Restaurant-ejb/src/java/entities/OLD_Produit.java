@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Produit implements Serializable
+public class OLD_Produit implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
@@ -18,21 +18,21 @@ public class Produit implements Serializable
     private String commentaire = "";
     private Item item;
    
-    public Produit(){}    
+    public OLD_Produit(){}    
     
-    public Produit(boolean Started, boolean Finished) {
+    public OLD_Produit(boolean Started, boolean Finished) {
         this.Started = Started;
         this.Finished = Finished;
     }
     
-    public Produit(boolean Started, boolean Finished, String commentaire, Item item) {
+    public OLD_Produit(boolean Started, boolean Finished, String commentaire, Item item) {
         this.Started = Started;
         this.Finished = Finished;
         this.commentaire = commentaire;
         this.item = item;
     }
     
-    public Produit(boolean Started, boolean Finished, String commentaire) {
+    public OLD_Produit(boolean Started, boolean Finished, String commentaire) {
         this.Started = Started;
         this.Finished = Finished;
         this.commentaire = commentaire;
@@ -49,10 +49,10 @@ public class Produit implements Serializable
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Produit)) {
+        if (!(object instanceof OLD_Produit)) {
             return false;
         }
-        Produit other = (Produit) object;
+        OLD_Produit other = (OLD_Produit) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

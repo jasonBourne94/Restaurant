@@ -5,7 +5,7 @@
  */
 package controler;
 
-import ejb.GestionnaireItemLocal;
+import ejb.CarteLocal;
 import ejb.GestionnaireTablesLocal;
 import ejb.GestionnaireUsersLocal;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AjoutDonnees extends HttpServlet
 {
     @EJB
-    private GestionnaireItemLocal gestionnaireItem;
+    private CarteLocal gestionnaireItem;
     @EJB
     private GestionnaireUsersLocal gestionnaireUsers;
     @EJB

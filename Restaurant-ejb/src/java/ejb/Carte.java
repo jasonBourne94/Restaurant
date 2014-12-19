@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Stateless
-public class GestionnaireItem implements GestionnaireItemLocal {
+public class Carte implements CarteLocal {
     @PersistenceContext(unitName = "Restaurant-ejbPU")
     private EntityManager em;
     

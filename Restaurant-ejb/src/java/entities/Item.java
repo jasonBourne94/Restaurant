@@ -4,26 +4,32 @@ package entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Item implements Serializable
 {
-
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nomItem;
-
     private String description = "";
     private String imagePath = "";
-    private BigDecimal TVA;
+    private BigDecimal tva;
     private BigDecimal prixHT;
-    private Boolean Cuisine;
-    private Boolean Active;
+    private Boolean cuisine;
+    private Boolean active;
+    private Boolean started = false;
+    private Boolean finished = false;
+    private String commentaire = "";
     private String categorie;
 
-        @ManyToOne
+    @ManyToOne
     private Commande commande;
         
     
@@ -38,11 +44,28 @@ public class Item implements Serializable
         this.nomItem = nomItem;
         this.description = description;
         this.imagePath = imagePath;
-        this.TVA = TVA;
+        this.tva = TVA;
         this.prixHT = prixHT;
-        this.Cuisine = Cuisine;
-        this.Active = true;
+        this.cuisine = Cuisine;
+        this.active = true;
         this.categorie = categorie;
+    }
+
+    public Item(String nomItem, String description, String imagePath,
+                BigDecimal TVA, BigDecimal prixHT, Boolean Cuisine, String categorie,
+                Boolean argStarted, Boolean argFinished, String argCommentaires)
+    {
+        this.nomItem = nomItem;
+        this.description = description;
+        this.imagePath = imagePath;
+        this.tva = TVA;
+        this.prixHT = prixHT;
+        this.cuisine = Cuisine;
+        this.active = true;
+        this.categorie = categorie;
+        this.started = argStarted;
+        this.finished = argFinished;
+        this.commentaire = argCommentaires;
     }
 
 
@@ -76,16 +99,48 @@ public class Item implements Serializable
         return "item =   " + this.nomItem + "\n "
                 + "description =   " + this.description + "\n "
                 + "chemin vers l'image=   " + this.imagePath + "\n "
-                + "TVA=   " + this.TVA + "\n "
+                + "TVA=   " + this.tva + "\n "
                 + "prix hors taxe=   " + this.prixHT + "\n "
-                + "entré en cuisine=   " + this.Cuisine + "\n "
-                + "present sur la carte=   " + this.Active + "\n "
+                + "entré en cuisine=   " + this.cuisine + "\n "
+                + "present sur la carte=   " + this.active + "\n "
                 + "categorie=   " + this.categorie + "\n ";
     }
 
     
     //<editor-fold defaultstate="collapsed" desc="g/s">
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public Boolean getStarted() {
+        return started;
+    }
+
+    public void setStarted(Boolean started) {
+        this.started = started;
+    }
+
+    public Boolean getFinished() {
+        return finished;
+    }
+
+    public void setFinished(Boolean finished) {
+        this.finished = finished;
+    }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
+    
     public String getNomItem()
     {
         return nomItem;
@@ -116,14 +171,14 @@ public class Item implements Serializable
         this.imagePath = imagePath;
     }
 
-    public BigDecimal getTVA()
+    public BigDecimal getTva()
     {
-        return TVA;
+        return tva;
     }
 
-    public void setTVA(BigDecimal TVA)
+    public void setTva(BigDecimal tva)
     {
-        this.TVA = TVA;
+        this.tva = tva;
     }
 
     public BigDecimal getPrixHT()
@@ -138,22 +193,22 @@ public class Item implements Serializable
 
     public Boolean getCuisine()
     {
-        return Cuisine;
+        return cuisine;
     }
 
-    public void setCuisine(Boolean Cuisine)
+    public void setCuisine(Boolean cuisine)
     {
-        this.Cuisine = Cuisine;
+        this.cuisine = cuisine;
     }
 
     public Boolean getActive()
     {
-        return Active;
+        return active;
     }
 
-    public void setActive(Boolean Active)
+    public void setActive(Boolean active)
     {
-        this.Active = Active;
+        this.active = active;
     }
 
     public String getCategorie()

@@ -15,7 +15,7 @@ import javax.ejb.Local;
  * @author cdi406
  */
 @Local
-public interface GestionnaireItemLocal
+public interface CarteLocal
 {
 
     public List getListe();
