@@ -20,12 +20,12 @@ public class Item implements Serializable
     private String nomItem;
     private String description = "";
     private String imagePath = "";
-    private BigDecimal TVA;
+    private BigDecimal tva;
     private BigDecimal prixHT;
-    private Boolean Cuisine;
-    private Boolean Active;
-    private Boolean Started = false;
-    private Boolean Finished = false;
+    private Boolean cuisine;
+    private Boolean active;
+    private Boolean started = false;
+    private Boolean finished = false;
     private String commentaire = "";
     private String categorie;
 
@@ -44,10 +44,10 @@ public class Item implements Serializable
         this.nomItem = nomItem;
         this.description = description;
         this.imagePath = imagePath;
-        this.TVA = TVA;
+        this.tva = TVA;
         this.prixHT = prixHT;
-        this.Cuisine = Cuisine;
-        this.Active = true;
+        this.cuisine = Cuisine;
+        this.active = true;
         this.categorie = categorie;
     }
 
@@ -58,13 +58,13 @@ public class Item implements Serializable
         this.nomItem = nomItem;
         this.description = description;
         this.imagePath = imagePath;
-        this.TVA = TVA;
+        this.tva = TVA;
         this.prixHT = prixHT;
-        this.Cuisine = Cuisine;
-        this.Active = true;
+        this.cuisine = Cuisine;
+        this.active = true;
         this.categorie = categorie;
-        this.Started = argStarted;
-        this.Finished = argFinished;
+        this.started = argStarted;
+        this.finished = argFinished;
         this.commentaire = argCommentaires;
     }
 
@@ -99,10 +99,10 @@ public class Item implements Serializable
         return "item =   " + this.nomItem + "\n "
                 + "description =   " + this.description + "\n "
                 + "chemin vers l'image=   " + this.imagePath + "\n "
-                + "TVA=   " + this.TVA + "\n "
+                + "TVA=   " + this.tva + "\n "
                 + "prix hors taxe=   " + this.prixHT + "\n "
-                + "entré en cuisine=   " + this.Cuisine + "\n "
-                + "present sur la carte=   " + this.Active + "\n "
+                + "entré en cuisine=   " + this.cuisine + "\n "
+                + "present sur la carte=   " + this.active + "\n "
                 + "categorie=   " + this.categorie + "\n ";
     }
 
@@ -118,19 +118,19 @@ public class Item implements Serializable
     }
     
     public Boolean getStarted() {
-        return Started;
+        return started;
     }
 
-    public void setStarted(Boolean Started) {
-        this.Started = Started;
+    public void setStarted(Boolean started) {
+        this.started = started;
     }
 
     public Boolean getFinished() {
-        return Finished;
+        return finished;
     }
 
-    public void setFinished(Boolean Finished) {
-        this.Finished = Finished;
+    public void setFinished(Boolean finished) {
+        this.finished = finished;
     }
 
     public String getCommentaire() {
@@ -171,14 +171,14 @@ public class Item implements Serializable
         this.imagePath = imagePath;
     }
 
-    public BigDecimal getTVA()
+    public BigDecimal getTva()
     {
-        return TVA;
+        return tva;
     }
 
-    public void setTVA(BigDecimal TVA)
+    public void setTva(BigDecimal tva)
     {
-        this.TVA = TVA;
+        this.tva = tva;
     }
 
     public BigDecimal getPrixHT()
@@ -193,22 +193,22 @@ public class Item implements Serializable
 
     public Boolean getCuisine()
     {
-        return Cuisine;
+        return cuisine;
     }
 
-    public void setCuisine(Boolean Cuisine)
+    public void setCuisine(Boolean cuisine)
     {
-        this.Cuisine = Cuisine;
+        this.cuisine = cuisine;
     }
 
     public Boolean getActive()
     {
-        return Active;
+        return active;
     }
 
-    public void setActive(Boolean Active)
+    public void setActive(Boolean active)
     {
-        this.Active = Active;
+        this.active = active;
     }
 
     public String getCategorie()
